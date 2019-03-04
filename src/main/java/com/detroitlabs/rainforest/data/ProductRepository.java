@@ -27,4 +27,13 @@ public class ProductRepository {
         return ALL_PRODUCTS;
     }
 
+
+    public Product findProductByName(String name) {
+        for(Product product: ALL_PRODUCTS) {
+            if (product.getName().equalsIgnoreCase(name)) {
+                return product;
+            }
+        }
+        return null;
+    }
 }

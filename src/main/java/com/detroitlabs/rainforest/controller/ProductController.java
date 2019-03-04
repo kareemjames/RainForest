@@ -25,7 +25,7 @@ public class ProductController {
 
     @RequestMapping("/product/{name}")
         public String productDetails(@PathVariable String name, ModelMap modelMap) {
-            Product product = productRepository.findByName(name);
+            Product product = productRepository.findProductByName(name);
             modelMap.put("product", product);
             return "product-details";
         }
