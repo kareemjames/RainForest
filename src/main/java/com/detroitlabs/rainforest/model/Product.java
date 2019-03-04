@@ -10,15 +10,17 @@ public class Product {
     double price;
     String miniDescription;
     int category;
+    String fullDescription;
 
     List<String> photos = new ArrayList<>();
 
-    public Product(String name, double price, String miniDescription, int category, List<String> photos) {
+    public Product(String name, double price, String miniDescription, int category, List<String> photos, String fullDescription) {
         this.name = name;
         this.price = price;
         this.miniDescription = miniDescription;
         this.category = category;
         this.photos = photos;
+        this.fullDescription = fullDescription;
     }
 
     @Override
@@ -72,4 +74,11 @@ public class Product {
         this.photos = photos;
     }
 
+    public String getFullDescription() {
+        return fullDescription;
+    }
+
+    public void setFullDescription(String fullDescription) {
+        this.fullDescription = fullDescription;
+    }
 }
