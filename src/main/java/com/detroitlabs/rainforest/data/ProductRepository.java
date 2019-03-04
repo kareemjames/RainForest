@@ -3,7 +3,6 @@ package com.detroitlabs.rainforest.data;
 import com.detroitlabs.rainforest.model.Product;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,7 +43,8 @@ public class ProductRepository {
 
     public String displayFirstPhotoInArray(){
         for(Product product : allProducts){
-            product.getPhotos().indexOf(0);
+            String firstPhoto = product.getPhotos().get(0);
+            return firstPhoto;
         }
         return null;
     }

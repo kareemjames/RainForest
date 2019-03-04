@@ -41,4 +41,16 @@ public class ProductRepositoryTest {
 
         assertThat(expectedReturn, equalTo(resultOfMethodCall));
     }
+
+    @Test
+    public void shouldDisplayFirstPhotoInArray() {
+        String expectedReturn = "photo1";
+        String resultOfMethodCall = productRepository.displayFirstPhotoInArray();
+
+        assertThat(expectedReturn, equalTo(resultOfMethodCall));
+    }
+
+    @Test
+    public void shouldReturnAllProductImages() {
+    }
 }
