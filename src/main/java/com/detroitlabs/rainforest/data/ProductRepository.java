@@ -36,4 +36,13 @@ public class ProductRepository {
         }
         return null;
     }
+
+    public String displayFirstPhotoInArray(){
+        for(Product product : ALL_PRODUCTS){
+            product.getPhotos().indexOf(0);
+        }
+        return null;
+    }
+
+
 }
