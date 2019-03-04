@@ -52,5 +52,9 @@ public class ProductRepositoryTest {
 
     @Test
     public void shouldReturnAllProductImages() {
+        List<String> expectedReturn = photos;
+        List<String> resultOfMethodCall = productRepository.returnAllProductImages(products.get(0));
+
+        assertThat(expectedReturn, equalTo(resultOfMethodCall));
     }
 }
