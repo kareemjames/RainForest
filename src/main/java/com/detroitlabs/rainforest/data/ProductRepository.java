@@ -3,6 +3,7 @@ package com.detroitlabs.rainforest.data;
 import com.detroitlabs.rainforest.model.Product;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class ProductRepository {
     private static final List<String> notebookPhotos = Arrays.asList("notebook1", "notebook2", "notebook3");
     private static final List<String> tabletPhotos = Arrays.asList("tablet1", "tablet2", "tablet3");
 
-    public static final List<Product> ALL_PRODUCTS = Arrays.asList(
+    public static List<Product> allProducts = Arrays.asList(
             new Product("beanie1", 15.00, "carhart beanie",1, beaniePhotos, "Comfortable Carhart beanie. Comes in various colors and sizes."),
             new Product("headlamp1", 50.00, "vehicle headlamp", 2, headlampPhotos, "LED headlamp for vehicle. Bright light for all conditions."),
             new Product("magicmouse1", 75.00, "magic mouse for computer", 3, magicmousePhotos,"Magic mouse perfect for your all of your apple products."),
@@ -24,12 +25,16 @@ public class ProductRepository {
     );
 
     public List<Product> getAllProducts(){
-        return ALL_PRODUCTS;
+        return allProducts;
+    }
+
+    public void setAllProducts(List<Product> newListOfProducts) {
+        allProducts = newListOfProducts;
     }
 
 
     public Product findProductByName(String name) {
-        for(Product product: ALL_PRODUCTS) {
+        for(Product product: allProducts) {
             if (product.getName().equalsIgnoreCase(name)) {
                 return product;
             }
