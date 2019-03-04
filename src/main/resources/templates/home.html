@@ -9,8 +9,13 @@
 <h1>Welcome to Rainforest</h1>
 
 <div th:each="image : ${allProducts}">
-    <img th:src="@{'/images/beanie1.png'}" />
+
+    <a th:href="@{'/product/'+ ${image.name}} ">
+    <img th:src="@{'/images/' + ${image.name} + '.png'}" />
+
+
     <p th:text="(${image.name})"></p>
+    </a>
 
 </div>
 
