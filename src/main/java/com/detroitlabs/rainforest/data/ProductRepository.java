@@ -43,7 +43,7 @@ public class ProductRepository {
     }
 
     public String displayFirstPhotoInArray(){
-        for(Product product : ALL_PRODUCTS){
+        for(Product product : allProducts){
             product.getPhotos().indexOf(0);
         }
         return null;
@@ -51,7 +51,7 @@ public class ProductRepository {
 
 
     public Product returnAllProductImages(){
-        for(Product product : ALL_PRODUCTS){
+        for(Product product : allProducts){
             product.getPhotos();
         }
         return null;
