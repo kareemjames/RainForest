@@ -74,4 +74,11 @@ public class Product {
         this.photos = photos;
     }
 
+    public String getFullDescription() {
+        return fullDescription;
+    }
+
+    public void setFullDescription(String fullDescription) {
+        this.fullDescription = fullDescription;
+    }
 }
