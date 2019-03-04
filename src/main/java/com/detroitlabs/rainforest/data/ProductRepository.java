@@ -12,7 +12,7 @@ public class ProductRepository {
     private static final List<String> photo = Arrays.asList("photo name");
 
     public static final List<Product> ALL_PRODUCTS = Arrays.asList(
-            new Product("name ", 0.0, "mini description",1, photo),
+            new Product("name", 0.0, "mini description",1, photo),
             new Product("name", 0.0, "mini description", 2, photo),
             new Product("name", 0.0, "mini description", 3, photo),
             new Product("name", 0.0, "mini description", 4, photo),
