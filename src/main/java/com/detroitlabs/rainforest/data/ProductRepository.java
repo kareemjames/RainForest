@@ -45,4 +45,12 @@ public class ProductRepository {
     }
 
 
+    public Product returnAllProductImages(){
+        for(Product product : ALL_PRODUCTS){
+            product.getPhotos();
+        }
+        return null;
+    }
+
+
 }
