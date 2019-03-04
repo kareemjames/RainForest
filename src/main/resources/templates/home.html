@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Rainforest Homepage</title>
 </head>
 <body>
+
+<h1>Welcome to Rainforest</h1>
+
+<div th:each="image : ${allProducts}">
+    <img th:src="@{'/images/beanie1.png'}" />
+    <p th:text="(${image.name})"></p>
+
+</div>
 
 </body>
 </html>
