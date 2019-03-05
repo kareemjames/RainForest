@@ -58,4 +58,9 @@ public class ProductRepository {
     }
 
 
+    public String[] splitSearchStringBySpace(String searchValue) {
+        String[] words = searchValue.split(" ");
+        return words;
+    }
+
 }

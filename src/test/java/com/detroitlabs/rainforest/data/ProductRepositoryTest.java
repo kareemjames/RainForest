@@ -57,4 +57,11 @@ public class ProductRepositoryTest {
 
         assertThat(expectedReturn, equalTo(resultOfMethodCall));
     }
+
+    @Test
+    public void splitSearchStringBySpace() {
+        String[] expectedReturn = new String[]{"hello", "world", "bread"};
+        String[] resultOfMethodCall = productRepository.splitSearchStringBySpace("hello world bread");
+        assertThat(expectedReturn, equalTo(resultOfMethodCall));
+    }
 }
