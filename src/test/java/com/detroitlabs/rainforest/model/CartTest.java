@@ -1,6 +1,6 @@
-package com.detroitlabs.rainforest.data;
+package com.detroitlabs.rainforest.model;
 
-import com.detroitlabs.rainforest.model.Product;
+import com.detroitlabs.rainforest.data.ProductRepository;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,11 +11,11 @@ import java.util.List;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.*;
 
-public class ProductRepositoryTest {
-
+public class CartTest {
     private ProductRepository productRepository = new ProductRepository();
     private List<Product> products;
     private List<String> photos;
+    private Cart cart;
 
     @Before
     public void create() {
@@ -32,29 +32,38 @@ public class ProductRepositoryTest {
 
         productRepository.setAllProducts(products);
 
+
+        cart = new Cart();
+    }
+
+
+    @Test
+    public void addItemToCart() {
+
+        cart.addItemToCart(products.get(0));
+        cart.addItemToCart(products.get(1));
+
+        int expectedCartSize = 2;
+        int resultOfMethodCall = cart.getSizeOfCart();
+
+        assertThat(expectedCartSize, equalTo(resultOfMethodCall));
+
+
     }
 
     @Test
-    public void shouldFindProductByName() {
-        Product expectedReturn = products.get(0);
-        Product resultOfMethodCall = productRepository.findProductByName("prod1");
+    public void removeItemFromCart() {
+        List<Product> itemsInCart = new ArrayList<>();
+        itemsInCart.add(new Product("prod1", 10, "mini desc", 2, photos, "full description",1001));
+        itemsInCart.add(new Product("prod2", 20, "mini desc", 2, photos, "full description",1002));
+        cart.setCart(itemsInCart);
 
-        assertThat(expectedReturn, equalTo(resultOfMethodCall));
-    }
+        cart.removeItemFromCart(1002);
 
-    @Test
-    public void shouldDisplayFirstPhotoInArray() {
-        String expectedReturn = "photo1";
-        String resultOfMethodCall = productRepository.displayFirstPhotoInArray();
+        int expectedCartSize = 1;
+        int resultOfMethodCall = cart.getSizeOfCart();
 
-        assertThat(expectedReturn, equalTo(resultOfMethodCall));
-    }
+        assertThat(expectedCartSize, equalTo(resultOfMethodCall));
 
-    @Test
-    public void shouldReturnAllProductImages() {
-        List<String> expectedReturn = photos;
-        List<String> resultOfMethodCall = productRepository.returnAllProductImages(products.get(0));
-
-        assertThat(expectedReturn, equalTo(resultOfMethodCall));
     }
 }
