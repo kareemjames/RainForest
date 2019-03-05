@@ -23,11 +23,11 @@ public class ProductRepositoryTest {
                 "photo1", "photo2"
         );
         products = Arrays.asList(
-                new Product("prod1", 10, "mini desc", 2, photos, "full description"),
-                new Product("prod2", 20, "mini desc", 2, photos, "full description"),
-                new Product("prod3", 30, "mini desc", 2, photos, "full description"),
-                new Product("prod4", 40, "mini desc", 2, photos, "full description"),
-                new Product("prod5", 50, "mini desc", 2, photos, "full description")
+                new Product("prod1", 10, "mini desc", 2, photos, "Fancy red hat"),
+                new Product("prod2", 20, "mini desc", 2, photos, "Big bold jacket"),
+                new Product("prod3", 30, "mini desc", 2, photos, "Shiny headlight"),
+                new Product("prod4", 40, "mini desc", 2, photos, "Silky smooth mouse"),
+                new Product("prod5", 50, "mini desc", 2, photos, "Sturdy notebook")
         );
 
         productRepository.setAllProducts(products);
@@ -57,4 +57,34 @@ public class ProductRepositoryTest {
 
         assertThat(expectedReturn, equalTo(resultOfMethodCall));
     }
+
+    @Test
+    public void splitSearchStringBySpace() {
+        String[] expectedReturn = new String[]{"hello", "world", "bread"};
+        String[] resultOfMethodCall = productRepository.splitSearchStringBySpace("hello world bread");
+        assertThat(expectedReturn, equalTo(resultOfMethodCall));
+    }
+
+    @Test
+    public void searchForProductsBySearchValue() {
+        List<Product> expectedReturn = Arrays.asList(products.get(0), products.get(1));
+        List<Product> expectedReturnForCase2 = Arrays.asList(products.get(3), products.get(4));
+        List<Product> expectedReturnForCase3 = products;
+
+        String[] searchTermsByName = new String[]{"prod1", "prod2"};
+        String[] searchTermsByDescription = new String[]{"silky", "sturdy"};
+        String[] searchTermsByBothNameAndDescription = new String[]{"pro", "big"};
+
+        List<Product> resultOfMethodCall = productRepository.searchForProductsBySearchValue(searchTermsByName);
+        assertThat(expectedReturn, equalTo(resultOfMethodCall));
+
+        List<Product> resultOfMethodCall2 = productRepository.searchForProductsBySearchValue(searchTermsByDescription);
+        assertEquals(expectedReturnForCase2, resultOfMethodCall2);
+
+        List<Product> resultOfMethodCall3 = productRepository.searchForProductsBySearchValue(searchTermsByBothNameAndDescription);
+        assertThat(expectedReturnForCase3, equalTo(resultOfMethodCall3));
+
+    }
+
+
 }
