@@ -1,5 +1,6 @@
 package com.detroitlabs.rainforest.data;
 
+import com.detroitlabs.rainforest.model.Category;
 import com.detroitlabs.rainforest.model.Product;
 import org.springframework.stereotype.Component;
 
@@ -55,6 +56,16 @@ public class ProductRepository {
 
         List<String> photos = product.getPhotos();
         return photos;
+    }
+
+
+    public Product findByCategory(int categoryId) {
+        for (Product product: allProducts) {
+            if (product.getCategory() == categoryId) {
+                return product;
+            }
+
+        }return null;
     }
 
 
