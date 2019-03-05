@@ -23,11 +23,13 @@ public class ProductRepositoryTest {
                 "photo1", "photo2"
         );
         products = Arrays.asList(
-                new Product("prod1", 10, "mini desc", 2, photos, "Fancy red hat"),
-                new Product("prod2", 20, "mini desc", 2, photos, "Big bold jacket"),
-                new Product("prod3", 30, "mini desc", 2, photos, "Shiny headlight"),
-                new Product("prod4", 40, "mini desc", 2, photos, "Silky smooth mouse"),
-                new Product("prod5", 50, "mini desc", 2, photos, "Sturdy notebook")
+
+                new Product("prod1", 10, "mini desc", 2, photos, "full description",1001),
+                new Product("prod2", 20, "mini desc", 2, photos, "full description",1002),
+                new Product("prod3", 30, "mini desc", 2, photos, "full description",1003),
+                new Product("prod4", 40, "mini desc", 2, photos, "full description",1004),
+                new Product("prod5", 50, "mini desc", 2, photos, "full description",1005)
+
         );
 
         productRepository.setAllProducts(products);
