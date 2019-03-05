@@ -1,5 +1,6 @@
 package com.detroitlabs.rainforest.data;
 
+import com.detroitlabs.rainforest.model.Category;
 import com.detroitlabs.rainforest.model.Product;
 import org.springframework.stereotype.Component;
 
@@ -56,6 +57,17 @@ public class ProductRepository {
     }
 
 
+
+    public Product findByCategory(int categoryId) {
+        for (Product product: allProducts) {
+            if (product.getCategory() == categoryId) {
+                return product;
+            }
+
+        }return null;
+    }
+
+
     public String[] splitSearchStringBySpace(String searchValue) {
         String[] words = searchValue.split(" ");
         return words;
@@ -86,5 +98,6 @@ public class ProductRepository {
         Collections.sort(products, Comparator.comparing(Product::getName));
         return products;
     }
+
 
 }

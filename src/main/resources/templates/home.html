@@ -7,6 +7,9 @@
 <body>
 
 <h1>Welcome to Rainforest</h1>
+<div th:each="category : ${allCategories}">
+    <a th:href="@{|/category/${productById}|}"><p th:text="(${category.name})"></p></a>
+</div>
 
 <div th:each="image : ${allProducts}">
 
