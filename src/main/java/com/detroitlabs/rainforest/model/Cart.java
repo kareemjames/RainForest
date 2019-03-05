@@ -27,6 +27,7 @@ public class Cart {
             if(cart.get(i).getUniqueId() == id){
                 cart.remove(i);
                 break;
+
             }
         }
 
