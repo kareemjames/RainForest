@@ -17,11 +17,11 @@ public class ProductRepository {
     private static final List<String> tabletPhotos = Arrays.asList("tablet1", "tablet2", "tablet3");
 
     public static List<Product> allProducts = Arrays.asList(
-            new Product("beanie1", 15.00, "carhart beanie", 1, beaniePhotos, "Comfortable Carhart beanie. Comes in various colors and sizes."),
-            new Product("headlamp1", 50.00, "vehicle headlamp", 2, headlampPhotos, "LED headlamp for vehicle. Bright light for all conditions."),
-            new Product("magicmouse1", 75.00, "magic mouse for computer", 3, magicmousePhotos, "Magic mouse perfect for your all of your apple products."),
-            new Product("notebook1", 20.00, "moleskine notebook", 4, notebookPhotos, "Soft cover notebook with 240 pages. Comes in various colors"),
-            new Product("tablet1", 70.00, "electronic drawing tablet", 5, tabletPhotos, "Electronic drawing tablet. Compatible with most electronic devices.")
+            new Product("beanie1", 15.00, "carhart beanie", 1, beaniePhotos, "Comfortable Carhart beanie. Comes in various colors and sizes.",1001),
+            new Product("headlamp1", 50.00, "vehicle headlamp", 2, headlampPhotos, "LED headlamp for vehicle. Bright light for all conditions.",1002),
+            new Product("magicmouse1", 75.00, "magic mouse for computer", 3, magicmousePhotos, "Magic mouse perfect for your all of your apple products.",1003),
+            new Product("notebook1", 20.00, "moleskine notebook", 4, notebookPhotos, "Soft cover notebook with 240 pages. Comes in various colors",1004),
+            new Product("tablet1", 70.00, "electronic drawing tablet", 5, tabletPhotos, "Electronic drawing tablet. Compatible with most electronic devices.",1005)
     );
 
     public List<Product> getAllProducts() {

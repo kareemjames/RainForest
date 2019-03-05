@@ -11,16 +11,18 @@ public class Product {
     String miniDescription;
     int category;
     String fullDescription;
+    int uniqueId;
 
     List<String> photos = new ArrayList<>();
 
-    public Product(String name, double price, String miniDescription, int category, List<String> photos, String fullDescription) {
+    public Product(String name, double price, String miniDescription, int category, List<String> photos, String fullDescription,int uniqueId) {
         this.name = name;
         this.price = price;
         this.miniDescription = miniDescription;
         this.category = category;
         this.photos = photos;
         this.fullDescription = fullDescription;
+        this.uniqueId = uniqueId;
     }
 
     @Override
@@ -80,5 +82,13 @@ public class Product {
 
     public void setFullDescription(String fullDescription) {
         this.fullDescription = fullDescription;
+    }
+
+    public int getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(int uniqueId) {
+        this.uniqueId = uniqueId;
     }
 }
