@@ -3,9 +3,7 @@ package com.detroitlabs.rainforest.data;
 import com.detroitlabs.rainforest.model.Product;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class ProductRepository {
@@ -61,6 +59,32 @@ public class ProductRepository {
     public String[] splitSearchStringBySpace(String searchValue) {
         String[] words = searchValue.split(" ");
         return words;
+    }
+
+    public List<Product> searchForProductsBySearchValue(String[] searchWords) {
+        List<Product> foundProducts = new ArrayList<>();
+
+        for (int i = 0; i < searchWords.length; i++) {
+
+            for (Product product : allProducts) {
+                if (product.getName().contains(searchWords[i].toLowerCase())) {
+                    foundProducts.add(product);
+                }
+                if (product.getFullDescription().toLowerCase().contains(searchWords[i].toLowerCase())) {
+                    foundProducts.add(product);
+                }
+            }
+        }
+        HashSet<Product> set = new HashSet<>(foundProducts);
+        ArrayList<Product> result = new ArrayList<>(set);
+
+        return sortProductsByName(result);
+    }
+
+    public List<Product> sortProductsByName(List<Product> products) {
+        Comparator.comparing(Product::getName).thenComparing(Product::getName);
+        Collections.sort(products, Comparator.comparing(Product::getName));
+        return products;
     }
 
 }
