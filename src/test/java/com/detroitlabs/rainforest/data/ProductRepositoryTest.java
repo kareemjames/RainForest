@@ -25,7 +25,7 @@ public class ProductRepositoryTest {
         products = Arrays.asList(
 
                 new Product("prod1", 10, "mini desc", 2, photos, "full description",1001),
-                new Product("prod2", 20, "mini desc", 2, photos, "full description",1002),
+                new Product("prod2", 20, "mini desc", 1, photos, "full description",1002),
                 new Product("prod3", 30, "mini desc", 2, photos, "full description",1003),
                 new Product("prod4", 40, "mini desc", 2, photos, "full description",1004),
                 new Product("prod5", 50, "mini desc", 2, photos, "full description",1005)
@@ -89,4 +89,10 @@ public class ProductRepositoryTest {
     }
 
 
+    @Test
+    public void findByCategory() {
+     Product expectedReturn = products.get(1);
+     Product resultOfMethodCall = productRepository.findByCategory(1);
+     assertThat(expectedReturn, equalTo(resultOfMethodCall));
+    }
 }

@@ -13,7 +13,7 @@ public class ProductRepository {
     private static final List<String> headlampPhotos = Arrays.asList("headlamp1", "headlamp2", "headlamp3");
     private static final List<String> magicmousePhotos = Arrays.asList("magicmouse1", "magicmouse2", "magicmouse3");
     private static final List<String> notebookPhotos = Arrays.asList("notebook1", "notebook2", "notebook3");
-    private static final List<String> tabletPhotos = Arrays.asList("tablet1", "tablet2", "tablet3");
+    private static final List<String> tabletPhotos = Arrays.asList("tablet1", "tablet2");
 
     public static List<Product> allProducts = Arrays.asList(
             new Product("beanie1", 15.00, "carhart beanie", 1, beaniePhotos, "Comfortable Carhart beanie. Comes in various colors and sizes.",1001),
@@ -59,6 +59,7 @@ public class ProductRepository {
 
 
     public Product findByCategory(int categoryId) {
+
         for (Product product: allProducts) {
             if (product.getCategory() == categoryId) {
                 return product;
