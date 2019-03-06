@@ -88,7 +88,6 @@ public class ProductRepositoryTest {
 
     }
 
-
     @Test
     public void findByCategory() {
      Product expectedReturn = products.get(1);
