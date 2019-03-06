@@ -54,7 +54,6 @@ public class ProductRepository {
         allProducts = newListOfProducts;
     }
 
-
     public Product findProductByName(String name) {
         for (Product product : allProducts) {
             if (product.getName().equalsIgnoreCase(name)) {
@@ -71,7 +70,6 @@ public class ProductRepository {
         }
         return null;
     }
-
 
     public List<String> returnAllProductImages(Product product) {
         List<String> photos = product.getPhotos();
@@ -121,5 +119,18 @@ public class ProductRepository {
         return products;
     }
 
+    public List<Product> returnProductbyCategory(int id) {
+        CategoryRepository cr = new CategoryRepository();
+        List<Category> categoryArray = cr.returnAllCategories();
+        List<Product> matchingProducts = new ArrayList<>();
 
+        for (Product product : allProducts) {
+            for (Category category : categoryArray) {
+                if (product.getCategory() == id && category.getId() == id) {
+                    matchingProducts.add(product);
+                }
+            }
+        }
+        return matchingProducts;
+    }
 }

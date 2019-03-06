@@ -34,12 +34,11 @@ public class ProductController {
 
     @RequestMapping("/category/{id}")
     public String productsOfSameCategory(@PathVariable int id, ModelMap modelMap) {
-        List<Product> allProducts = productRepository.findByCategory(id);
+        List<Product> allProducts = productRepository.returnProductbyCategory(id);
         modelMap.put("allProducts", allProducts);
 
         return "boot-home";
     }
-
 
     @RequestMapping("/product/{name}")
         public String productDetails(@PathVariable String name, ModelMap modelMap) {
@@ -47,6 +46,7 @@ public class ProductController {
             modelMap.put("product", product);
             return "product-details";
         }
+
 
 
 }
