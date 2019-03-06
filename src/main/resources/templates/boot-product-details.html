@@ -73,12 +73,18 @@
             <ul th:each="review : ${product.productReviews}">
                 <li th:text="${review}">Lorem Ipsum</li>
             </ul>
+            <div>
+                <form action=“/checkout/” method=“get” >
+                    <input th:name = "name" type=hidden th:value=“${product.name}“>
+                    <input name=“checkout” type = “submit” value=“Add To Cart“/> </form>
+            </div>
         </div>
 
     </div>
     <!-- /.row -->
 
     <!-- Additional Photos Row -->
+
     <h3 class="my-4">Additional Images</h3>
 
     <div class="row">
