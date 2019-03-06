@@ -13,8 +13,9 @@ public class Product {
     int uniqueId;
 
     List<String> photos = new ArrayList<>();
+    List<String> productReviews = new ArrayList<>();
 
-    public Product(String name, double price, String miniDescription, int category, List<String> photos, String fullDescription,int uniqueId) {
+    public Product(String name, double price, String miniDescription, int category, List<String> photos, String fullDescription,int uniqueId,List<String> productReviews) {
         this.name = name;
         this.price = price;
         this.miniDescription = miniDescription;
@@ -22,6 +23,7 @@ public class Product {
         this.photos = photos;
         this.fullDescription = fullDescription;
         this.uniqueId = uniqueId;
+        this.productReviews = productReviews;
     }
 
     @Override
@@ -89,5 +91,13 @@ public class Product {
 
     public void setUniqueId(int uniqueId) {
         this.uniqueId = uniqueId;
+    }
+
+    public List<String> getProductReviews() {
+        return productReviews;
+    }
+
+    public void setProductReviews(List<String> productReviews) {
+        this.productReviews = productReviews;
     }
 }
