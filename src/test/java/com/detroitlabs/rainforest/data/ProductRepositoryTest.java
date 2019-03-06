@@ -92,7 +92,7 @@ public class ProductRepositoryTest {
     @Test
     public void findByCategory() {
      Product expectedReturn = products.get(1);
-     Product resultOfMethodCall = productRepository.findByCategory(1);
+     List<Product> resultOfMethodCall = productRepository.findByCategory(1);
      assertThat(expectedReturn, equalTo(resultOfMethodCall));
     }
 }
