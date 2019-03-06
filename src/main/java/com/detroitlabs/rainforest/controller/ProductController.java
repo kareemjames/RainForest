@@ -64,4 +64,12 @@ public class ProductController {
 
 
 
+
+    @RequestMapping("search")
+    public String searchByValue(@RequestParam("q") String searchValue, ModelMap modelMap) {
+        String[] splitStringArray = productRepository.splitSearchStringBySpace(searchValue);
+        List<Product> allProducts = productRepository.searchForProductsBySearchValue(splitStringArray);
+        modelMap.put("allProducts", allProducts);
+        return "boot-home";
+    }
 }
