@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -41,12 +42,17 @@ public class ProductController {
     }
 
     @RequestMapping("/product/{name}")
-        public String productDetails(@PathVariable String name, ModelMap modelMap) {
-            Product product = productRepository.findProductByName(name);
-            modelMap.put("product", product);
-            return "boot-product-details";
-        }
+    public String productDetails(@PathVariable String name, ModelMap modelMap) {
+        Product product = productRepository.findProductByName(name);
+        modelMap.put("product", product);
+        return "boot-product-details";
+    }
 
-
-
+    @RequestMapping("search")
+    public String searchByValue(@RequestParam("q") String searchValue, ModelMap modelMap) {
+        String[] splitStringArray = productRepository.splitSearchStringBySpace(searchValue);
+        List<Product> allProducts = productRepository.searchForProductsBySearchValue(splitStringArray);
+        modelMap.put("allProducts", allProducts);
+        return "boot-home";
+    }
 }
