@@ -34,8 +34,8 @@ public class ProductController {
 
     @RequestMapping("/category/{id}")
     public String productsOfSameCategory(@PathVariable int id, ModelMap modelMap) {
-        Product product = productRepository.findByCategory(id);
-        modelMap.put("product", product);
+        List<Product> allProducts = productRepository.findByCategory(id);
+        modelMap.put("allProducts", allProducts);
 
         return "home";
     }
