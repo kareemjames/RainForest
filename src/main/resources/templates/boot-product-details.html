@@ -13,34 +13,80 @@
     <link th:href="@{/album.css}" rel="stylesheet"/>
 </head>
 <body>
+<header>
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-white">About</h4>
+                    <p class="text-muted">Add some information about the album below, the author, or any other
+                        background context. Make it a few sentences long so folks can pick up some informative tidbits.
+                        Then, link them off to some social networking sites or contact information.</p>
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <h4 class="text-white">Contact</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                        <li><a href="#" class="text-white">Like on Facebook</a></li>
+                        <li><a href="#" class="text-white">Email me</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2"
+                     viewBox="0 0 24 24" focusable="false">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                    <circle cx="12" cy="13" r="4"/>
+                </svg>
+                <strong>Album</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
 
 <!-- Page Content -->
 <div class="container">
 
     <!-- Portfolio Item Heading -->
-    <h1 class="my-4">Page Heading
-        <small>Secondary Text</small>
-    </h1>
+    <h1 class="my-4" th:text="${product.name}">Page Heading</h1>
 
     <!-- Portfolio Item Row -->
     <div class="row">
 
         <div class="col-md-8">
-            <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+            <img class="img-fluid" th:src="@{'/images/' + ${product.name} + '.png'}" alt="main product image">
         </div>
 
         <div class="col-md-4">
-            <h3 class="my-3">Project Description</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-                urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies,
-                justo eu convallis placerat, felis enim.</p>
-            <h3 class="my-3">Project Details</h3>
-            <ul>
-                <li>Lorem Ipsum</li>
-                <li>Dolor Sit Amet</li>
-                <li>Consectetur</li>
-                <li>Adipiscing Elit</li>
+            <h3 class="my-3">Item Description</h3>
+            <p th:text="${product.fullDescription}">Full Description</p>
+            <h3 class="my-3">Reviews</h3>
+            <ul th:each="review : ${product.productReviews}">
+                <li th:text="${review}">Lorem Ipsum</li>
             </ul>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+    <!-- Additional Photos Row -->
+    <h3 class="my-4">Additional Images</h3>
+
+    <div class="row">
+
+        <div th:each="photo : ${product.photos}"  class="col-md-3 col-sm-6 mb-4">
+            <a href="#">
+                <img class="img-fluid" th:src="@{'/images/' + ${photo} + '.png'}" alt="additional product images">
+            </a>
         </div>
 
     </div>
