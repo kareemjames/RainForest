@@ -29,7 +29,7 @@ public class ProductController {
         List<Category> allCategories = categoryRepository.returnAllCategories();
         modelMap.put("allCategories", allCategories);
 
-        return "home";
+        return "boot-home";
     }
 
     @RequestMapping("/category/{id}")
@@ -37,7 +37,7 @@ public class ProductController {
         List<Product> allProducts = productRepository.findByCategory(id);
         modelMap.put("allProducts", allProducts);
 
-        return "home";
+        return "boot-home";
     }
 
 
