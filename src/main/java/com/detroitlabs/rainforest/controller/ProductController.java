@@ -44,7 +44,7 @@ public class ProductController {
         public String productDetails(@PathVariable String name, ModelMap modelMap) {
             Product product = productRepository.findProductByName(name);
             modelMap.put("product", product);
-            return "product-details";
+            return "boot-product-details";
         }
 
 
