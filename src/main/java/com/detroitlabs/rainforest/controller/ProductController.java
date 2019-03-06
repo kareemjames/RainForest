@@ -2,6 +2,7 @@ package com.detroitlabs.rainforest.controller;
 
 import com.detroitlabs.rainforest.data.CategoryRepository;
 import com.detroitlabs.rainforest.data.ProductRepository;
+import com.detroitlabs.rainforest.model.Cart;
 import com.detroitlabs.rainforest.model.Category;
 import com.detroitlabs.rainforest.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class ProductController {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
 
     @RequestMapping("/")
     public String displayAllProducts(ModelMap modelMap) {
@@ -42,11 +44,26 @@ public class ProductController {
     }
 
     @RequestMapping("/product/{name}")
-    public String productDetails(@PathVariable String name, ModelMap modelMap) {
+        public String productDetails(@PathVariable String name, ModelMap modelMap) {
+            Product product = productRepository.findProductByName(name);
+            modelMap.put("product", product);
+            return "boot-product-details";
+        }
+
+
+    @RequestMapping("/checkout/")
+    public String updateCart  (ModelMap modelMap, @RequestParam("name") String name) {
         Product product = productRepository.findProductByName(name);
-        modelMap.put("product", product);
-        return "boot-product-details";
+        productRepository.getCart().addItemToCart(product);
+        List<Product> itemsInCart = productRepository.getCart().viewAllItemsInCart();
+        modelMap.put("itemsInCart", itemsInCart);
+        return "boot-checkout";
     }
+
+
+
+
+
 
     @RequestMapping("search")
     public String searchByValue(@RequestParam("q") String searchValue, ModelMap modelMap) {
