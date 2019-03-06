@@ -2,6 +2,7 @@ package com.detroitlabs.rainforest.controller;
 
 import com.detroitlabs.rainforest.data.CategoryRepository;
 import com.detroitlabs.rainforest.data.ProductRepository;
+import com.detroitlabs.rainforest.model.Cart;
 import com.detroitlabs.rainforest.model.Category;
 import com.detroitlabs.rainforest.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ public class ProductController {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
 
     @RequestMapping("/")
     public String displayAllProducts(ModelMap modelMap) {
@@ -46,6 +48,15 @@ public class ProductController {
             modelMap.put("product", product);
             return "boot-product-details";
         }
+
+    @RequestMapping("/checkout")
+    public String returnCheckout(ModelMap modelMap) {
+//        Product product = productRepository.findProductByName(name);
+        productRepository.getCart().addItemToCart(productRepository.getAllProducts().get(0));
+        List<Product> itemsInCart = productRepository.getCart().viewAllItemsInCart();
+        modelMap.put("itemsInCart", itemsInCart);
+    return "boot-checkout";
+    }
 
 
 

@@ -1,5 +1,6 @@
 package com.detroitlabs.rainforest.data;
 
+import com.detroitlabs.rainforest.model.Cart;
 import com.detroitlabs.rainforest.model.Category;
 import com.detroitlabs.rainforest.model.Product;
 import org.springframework.stereotype.Component;
@@ -45,6 +46,8 @@ public class ProductRepository {
             new Product("notebook1", 20.00, "moleskine notebook", 4, notebookPhotos, "Soft cover notebook with 240 pages. Comes in various colors", 1004, notebookReviews),
             new Product("tablet1", 70.00, "electronic drawing tablet", 5, tabletPhotos, "Electronic drawing tablet. Compatible with most electronic devices.", 1005,tabletReviews)
     );
+
+    private Cart cart = new Cart();
 
     public List<Product> getAllProducts() {
         return allProducts;
@@ -132,5 +135,9 @@ public class ProductRepository {
             }
         }
         return matchingProducts;
+    }
+
+    public Cart getCart() {
+        return cart;
     }
 }
