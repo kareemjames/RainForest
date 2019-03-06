@@ -67,5 +67,12 @@ public class CartTest {
 
     }
 
+    @Test
+    public void shouldTotalPricesOfItemsInCart(){
+        cart.setCart(products);
+        double resultOfMethodCall = cart.totalPriceOfProductInCart();
+        double expectedTotal = 150.00;
 
+        assertThat(expectedTotal,equalTo(resultOfMethodCall));
+    }
 }
