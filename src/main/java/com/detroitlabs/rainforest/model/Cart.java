@@ -7,7 +7,7 @@ public class Cart {
 
     private List<Product> cart;
 
-    public Cart(){
+    public Cart() {
         cart = new ArrayList<>();
     }
 
@@ -16,36 +16,41 @@ public class Cart {
         return cart;
     }
 
-    public void addItemToCart(Product product){
+    public void addItemToCart(Product product) {
 
         cart.add(product);
     }
 
-    public void removeItemFromCart(int id){
+    public void removeItemFromCart(int id) {
         int initialCartSize = cart.size();
-        for(int i = 0; i < initialCartSize; i++){
-            if(cart.get(i).getUniqueId() == id){
+        for (int i = 0; i < initialCartSize; i++) {
+            if (cart.get(i).getUniqueId() == id) {
                 cart.remove(i);
                 break;
 
             }
         }
-
-//        Product foundProduct = null;
-//        for(Product product : cart){
-//            if(product.getUniqueId() == id){
-//                foundProduct = product;
-//            }
-//        }
-//        cart.remove(foundProduct);
-
     }
 
-    public int getSizeOfCart(){
+    public int getSizeOfCart() {
         return cart.size();
     }
 
     public void setCart(List<Product> cart) {
         this.cart = cart;
     }
+
+
+    public double totalPriceOfProductInCart() {
+        double checkoutTotal = 0;
+        List<Double> pricesOfItemsInCart = new ArrayList<>();
+        for(Product product : cart){
+           pricesOfItemsInCart.add(product.getPrice());
+        }
+        for(Double priceOfItem : pricesOfItemsInCart){
+            checkoutTotal += priceOfItem;
+        }
+        return checkoutTotal;
+    }
+
 }

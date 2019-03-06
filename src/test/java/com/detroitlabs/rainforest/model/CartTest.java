@@ -52,7 +52,7 @@ public class CartTest {
     }
 
     @Test
-    public void removeItemFromCart() {
+    public void shouldRemoveItemFromCart() {
         List<Product> itemsInCart = new ArrayList<>();
         itemsInCart.add(new Product("prod1", 10, "mini desc", 2, photos, "full description",1001));
         itemsInCart.add(new Product("prod2", 20, "mini desc", 2, photos, "full description",1002));
@@ -65,5 +65,14 @@ public class CartTest {
 
         assertThat(expectedCartSize, equalTo(resultOfMethodCall));
 
+    }
+
+    @Test
+    public void shouldTotalPricesOfItemsInCart(){
+        cart.setCart(products);
+        double resultOfMethodCall = cart.totalPriceOfProductInCart();
+        double expectedTotal = 150.00;
+
+        assertThat(expectedTotal,equalTo(resultOfMethodCall));
     }
 }
